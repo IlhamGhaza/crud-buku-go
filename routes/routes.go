@@ -2,11 +2,13 @@ package routes
 
 import (
 	"crud-buku-go/controllers"
+	_ "crud-buku-go/docs" // Import generated docs
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
 // SetupRoutes mengkonfigurasi semua rute untuk aplikasi
@@ -15,6 +17,9 @@ func SetupRoutes() *mux.Router {
 
 	// Middleware untuk logging setiap request (contoh sederhana)
 	router.Use(loggingMiddleware)
+
+	// Rute untuk Swagger UI
+	router.PathPrefix("/swagger/").Handler(httpSwagger.WrapHandler)
 
 	// Rute untuk halaman utama sederhana
 	router.HandleFunc("/", homeHandler).Methods("GET")
@@ -26,6 +31,8 @@ func SetupRoutes() *mux.Router {
 	router.HandleFunc("/api/books/{id}", controllers.UpdateBookHandler).Methods("PUT")
 	router.HandleFunc("/api/books/{id}", controllers.PatchBookHandler).Methods("PATCH")
 	router.HandleFunc("/api/books/{id}", controllers.DeleteBookHandler).Methods("DELETE")
+
+	log.Println("Rute Swagger UI telah diinisialisasi di /swagger/")
 
 	log.Println("Rute API telah diinisialisasi.")
 	return router

@@ -11,6 +11,13 @@ import (
 )
 
 // GetBooksHandler menghandle request untuk mendapatkan semua buku
+// @Summary Mendapatkan semua buku
+// @Description Mengambil daftar semua buku dari database.
+// @Tags books
+// @Accept json
+// @Produce json
+// @Success 200 {array} models.Book "Daftar semua buku"
+// @Router /books [get]
 func GetBooksHandler(w http.ResponseWriter, r *http.Request) {
 	books, err := models.GetAllBooks()
 	if err != nil {
@@ -21,6 +28,17 @@ func GetBooksHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // GetBookHandler menghandle request untuk mendapatkan satu buku berdasarkan ID
+// @Summary Mendapatkan buku berdasarkan ID
+// @Description Mengambil detail buku berdasarkan ID.
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "ID Buku"
+// @Success 200 {object} models.Book "Detail buku"
+// @Failure 400 {object} map[string]string "ID buku tidak valid"
+// @Failure 404 {object} map[string]string "Buku tidak ditemukan"
+// @Failure 500 {object} map[string]string "Kesalahan server internal"
+// @Router /books/{id} [get]
 func GetBookHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
@@ -42,6 +60,16 @@ func GetBookHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // CreateBookHandler menghandle request untuk membuat buku baru
+// @Summary Membuat buku baru
+// @Description Menambahkan buku baru ke database.
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param book body models.Book true "Data buku baru"
+// @Success 201 {object} models.Book "Buku berhasil dibuat"
+// @Failure 400 {object} map[string]string "Payload request tidak valid atau data buku tidak lengkap"
+// @Failure 500 {object} map[string]string "Kesalahan server internal"
+// @Router /books [post]
 func CreateBookHandler(w http.ResponseWriter, r *http.Request) {
 	var book models.Book
 	decoder := json.NewDecoder(r.Body)
@@ -66,6 +94,18 @@ func CreateBookHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // UpdateBookHandler menghandle request untuk memperbarui buku
+// @Summary Memperbarui buku
+// @Description Memperbarui data buku berdasarkan ID.
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "ID Buku"
+// @Param book body models.Book true "Data buku yang diperbarui"
+// @Success 200 {object} models.Book "Buku berhasil diperbarui"
+// @Failure 400 {object} map[string]string "ID buku tidak valid atau payload request tidak valid"
+// @Failure 404 {object} map[string]string "Buku tidak ditemukan untuk diperbarui"
+// @Failure 500 {object} map[string]string "Kesalahan server internal"
+// @Router /books/{id} [put]
 func UpdateBookHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
@@ -107,6 +147,17 @@ func UpdateBookHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // DeleteBookHandler menghandle request untuk menghapus buku
+// @Summary Menghapus buku
+// @Description Menghapus buku berdasarkan ID.
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "ID Buku"
+// @Success 200 {object} map[string]string "Pesan sukses penghapusan"
+// @Failure 400 {object} map[string]string "ID buku tidak valid"
+// @Failure 404 {object} map[string]string "Buku tidak ditemukan untuk dihapus"
+// @Failure 500 {object} map[string]string "Kesalahan server internal"
+// @Router /books/{id} [delete]
 func DeleteBookHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
@@ -127,6 +178,18 @@ func DeleteBookHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 // PatchBookHandler menghandle request untuk memperbarui sebagian data buku
+// @Summary Memperbarui sebagian data buku
+// @Description Memperbarui sebagian data buku (judul, penulis, atau tahun) berdasarkan ID.
+// @Tags books
+// @Accept json
+// @Produce json
+// @Param id path int true "ID Buku"
+// @Param book body models.Book true "Data buku yang akan diperbarui (hanya field yang ingin diubah)"
+// @Success 200 {object} models.Book "Buku berhasil diperbarui (sebagian)"
+// @Failure 400 {object} map[string]string "ID buku tidak valid atau payload request tidak valid"
+// @Failure 404 {object} map[string]string "Buku tidak ditemukan untuk diperbarui"
+// @Failure 500 {object} map[string]string "Kesalahan server internal"
+// @Router /books/{id} [patch]
 func PatchBookHandler(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, err := strconv.Atoi(vars["id"])
