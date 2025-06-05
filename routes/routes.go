@@ -2,24 +2,24 @@ package routes
 
 import (
 	"crud-buku-go/controllers"
+	_ "crud-buku-go/docs"
 	"fmt"
 	"log"
 	"net/http"
 
 	"github.com/gorilla/mux"
+	httpSwagger "github.com/swaggo/http-swagger"
 )
 
-// SetupRoutes mengkonfigurasi semua rute untuk aplikasi
 func SetupRoutes() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 
-	// Middleware untuk logging setiap request (contoh sederhana)
 	router.Use(loggingMiddleware)
 
-	// Rute untuk halaman utama sederhana
+	router.PathPrefix("/api/doc/").Handler(httpSwagger.WrapHandler)
+
 	router.HandleFunc("/", homeHandler).Methods("GET")
 
-	// Rute untuk Buku
 	router.HandleFunc("/api/books", controllers.GetBooksHandler).Methods("GET")
 	router.HandleFunc("/api/books", controllers.CreateBookHandler).Methods("POST")
 	router.HandleFunc("/api/books/{id}", controllers.GetBookHandler).Methods("GET")
@@ -27,25 +27,24 @@ func SetupRoutes() *mux.Router {
 	router.HandleFunc("/api/books/{id}", controllers.PatchBookHandler).Methods("PATCH")
 	router.HandleFunc("/api/books/{id}", controllers.DeleteBookHandler).Methods("DELETE")
 
+	log.Println("Rute Swagger UI telah diinisialisasi di /api/doc/")
 	log.Println("Rute API telah diinisialisasi.")
 	return router
 }
 
-// loggingMiddleware adalah contoh middleware sederhana untuk mencatat request
+// logging
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		log.Printf("Request: %s %s", r.Method, r.RequestURI)
-		// Panggil handler berikutnya dalam chain
+
 		next.ServeHTTP(w, r)
-		// Kode setelah handler (jika ada)
-		// log.Println("Selesai memproses request") // Bisa ditambahkan jika perlu
+
 	})
 }
 
-// homeHandler menangani request ke rute root ("/") dan menampilkan halaman HTML sederhana.
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	// Menggunakan fmt.Fprintf untuk menulis multiple lines dengan lebih mudah
+
 	fmt.Fprintf(w, `<!DOCTYPE html>
 <html lang="id">
 <head>
@@ -101,7 +100,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
     <div class="container">
         <h1>Selamat Datang di API CRUD Buku!</h1>
         <p>Server API ini berjalan dengan baik dan siap melayani permintaan Anda.</p>
-        <p>Anda dapat mulai berinteraksi dengan data buku melalui endpoint di <code>/api/books</code>.</p>
+        <p>Anda dapat mulai berinteraksi dengan data buku melalui endpoint di <code>/api/doc/</code>.</p>
         <p class="footer">Dikembangkan dengan Go.</p>
     </div>
 </body>

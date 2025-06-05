@@ -8,6 +8,7 @@ import (
 	"time"
 )
 
+// @Description Struktur data untuk buku
 // Book merepresentasikan struktur data buku
 type Book struct {
 	ID        int       `json:"id"`
@@ -61,7 +62,6 @@ func CreateBook(book *Book) error {
 		time.Sleep(100 * time.Millisecond)
 		log.Printf("Goroutine: Selesai proses pembuatan buku: %s", b.Title)
 	}(book)
-
 
 	query := `INSERT INTO books (title, author, year, created_at, updated_at)
 	          VALUES ($1, $2, $3, $4, $5) RETURNING id, created_at, updated_at`
