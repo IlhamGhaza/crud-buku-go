@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 	"github.com/joho/godotenv"
 	_ "crud-buku-go/docs"
 )
@@ -57,12 +58,20 @@ func main() {
 	log.Printf("🌐 Server juga dapat diakses di LAN pada alamat IP mesin Anda dengan port %s", appPort)
 	log.Printf("Tekan CTRL+C untuk menghentikan server.")
 
-	err = http.ListenAndServe(serverAddr, router)
-	if err != nil {
+	server := &http.Server{
+		Addr:         serverAddr,
+		Handler:      router,
+		ReadTimeout:  15 * time.Second,
+		WriteTimeout: 15 * time.Second,
+		IdleTimeout:  60 * time.Second,
+	}
+
+	log.Printf("🚀 Server berjalan di %s", serverAddr)
+	err = server.ListenAndServe()
+	if err != nil && err != http.ErrServerClosed {
 		log.Fatalf("Gagal menjalankan server: %v", err)
 	}
 }
 
 
 //http://localhost:8080/api/doc/
- 

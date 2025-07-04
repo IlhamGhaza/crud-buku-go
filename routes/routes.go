@@ -5,6 +5,7 @@ import (
 	_ "crud-buku-go/docs"
 	"fmt"
 	"log"
+    "time"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -52,11 +53,47 @@ func SetupRoutes() *mux.Router {
 // logging
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		log.Printf("Request: %s %s", r.Method, r.RequestURI)
-
-		next.ServeHTTP(w, r)
-
+		start := time.Now()
+		
+		// Log request details
+		log.Printf("📥 [%s] %s %s from %s", r.Method, r.RequestURI, r.Proto, r.RemoteAddr)
+		
+		// Wrap the response writer to capture status code
+		rw := &responseWriter{ResponseWriter: w, status: http.StatusOK}
+		
+		// Process the request
+		next.ServeHTTP(rw, r)
+		
+		// Calculate response time
+		duration := time.Since(start)
+		
+		// Log response details
+		log.Printf("📤 [%d] %s %s completed in %v (size: %d bytes)", 
+			rw.status, 
+			r.Method, 
+			r.RequestURI, 
+			duration,
+			rw.size,
+		)
 	})
+}
+
+// responseWriter wraps http.ResponseWriter to capture status code and size
+type responseWriter struct {
+	http.ResponseWriter
+	status int
+	size   int
+}
+
+func (rw *responseWriter) WriteHeader(code int) {
+	rw.status = code
+	rw.ResponseWriter.WriteHeader(code)
+}
+
+func (rw *responseWriter) Write(b []byte) (int, error) {
+	size, err := rw.ResponseWriter.Write(b)
+	rw.size += size
+	return size, err
 }
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
