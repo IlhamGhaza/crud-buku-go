@@ -1,0 +1,431 @@
+{
+	"info": {
+		"_postman_id": "c1955efc-c9f3-4271-aec5-ce9c2ef04f89",
+		"name": "PPBM2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26123012"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/books",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 05:11:22 GMT"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 1,\n        \"title\": \"Laskar Pelangi\",\n        \"author\": \"Andrea Hirata\",\n        \"year\": 2005,\n        \"created_at\": \"2025-05-26T12:03:28.692217Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.692217Z\"\n    },\n    {\n        \"id\": 2,\n        \"title\": \"Bumi Manusia\",\n        \"author\": \"Pramoedya Ananta Toer\",\n        \"year\": 1980,\n        \"created_at\": \"2025-05-26T12:03:28.697523Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.697523Z\"\n    },\n    {\n        \"id\": 3,\n        \"title\": \"Negeri 5 Menara\",\n        \"author\": \"Ahmad Fuadi\",\n        \"year\": 2009,\n        \"created_at\": \"2025-05-26T12:03:28.698308Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.698308Z\"\n    },\n    {\n        \"id\": 4,\n        \"title\": \"Ayat-Ayat Cinta\",\n        \"author\": \"Habiburrahman El Shirazy\",\n        \"year\": 2004,\n        \"created_at\": \"2025-05-26T12:03:28.698912Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.698912Z\"\n    },\n    {\n        \"id\": 5,\n        \"title\": \"Sang Pemimpi\",\n        \"author\": \"Andrea Hirata\",\n        \"year\": 2006,\n        \"created_at\": \"2025-05-26T12:03:28.699491Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.699491Z\"\n    },\n    {\n        \"id\": 6,\n        \"title\": \"Perahu Kertas\",\n        \"author\": \"Dee Lestari\",\n        \"year\": 2009,\n        \"created_at\": \"2025-05-26T12:03:28.699491Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.699491Z\"\n    },\n    {\n        \"id\": 7,\n        \"title\": \"Ronggeng Dukuh Paruk\",\n        \"author\": \"Ahmad Tohari\",\n        \"year\": 1982,\n        \"created_at\": \"2025-05-26T12:03:28.700114Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.700114Z\"\n    },\n    {\n        \"id\": 8,\n        \"title\": \"Supernova: Ksatria, Puteri, dan Bintang Jatuh\",\n        \"author\": \"Dee Lestari\",\n        \"year\": 2001,\n        \"created_at\": \"2025-05-26T12:03:28.700114Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.700114Z\"\n    },\n    {\n        \"id\": 9,\n        \"title\": \"Ketika Cinta Bertasbih\",\n        \"author\": \"Habiburrahman El Shirazy\",\n        \"year\": 2007,\n        \"created_at\": \"2025-05-26T12:03:28.700707Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.700707Z\"\n    },\n    {\n        \"id\": 10,\n        \"title\": \"5 cm\",\n        \"author\": \"Donny Dhirgantoro\",\n        \"year\": 2005,\n        \"created_at\": \"2025-05-26T12:03:28.700707Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.700707Z\"\n    },\n    {\n        \"id\": 11,\n        \"title\": \"Pulang\",\n        \"author\": \"Leila S. Chudori\",\n        \"year\": 2012,\n        \"created_at\": \"2025-05-26T12:03:28.701296Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.701296Z\"\n    },\n    {\n        \"id\": 12,\n        \"title\": \"Cantik Itu Luka\",\n        \"author\": \"Eka Kurniawan\",\n        \"year\": 2002,\n        \"created_at\": \"2025-05-26T12:03:28.701296Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.701296Z\"\n    },\n    {\n        \"id\": 13,\n        \"title\": \"Saman\",\n        \"author\": \"Ayu Utami\",\n        \"year\": 1998,\n        \"created_at\": \"2025-05-26T12:03:28.70186Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.70186Z\"\n    },\n    {\n        \"id\": 14,\n        \"title\": \"Gadis Kretek\",\n        \"author\": \"Ratih Kumala\",\n        \"year\": 2012,\n        \"created_at\": \"2025-05-26T12:03:28.70186Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.70186Z\"\n    },\n    {\n        \"id\": 15,\n        \"title\": \"Laut Bercerita\",\n        \"author\": \"Leila S. Chudori\",\n        \"year\": 2017,\n        \"created_at\": \"2025-05-26T12:03:28.702364Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.702364Z\"\n    },\n    {\n        \"id\": 16,\n        \"title\": \"Filosofi Kopi\",\n        \"author\": \"Dee Lestari\",\n        \"year\": 2006,\n        \"created_at\": \"2025-05-26T12:03:28.703201Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.703201Z\"\n    },\n    {\n        \"id\": 17,\n        \"title\": \"Edensor\",\n        \"author\": \"Andrea Hirata\",\n        \"year\": 2007,\n        \"created_at\": \"2025-05-26T12:03:28.703706Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.703706Z\"\n    },\n    {\n        \"id\": 18,\n        \"title\": \"Amba\",\n        \"author\": \"Laksmi Pamuntjak\",\n        \"year\": 2012,\n        \"created_at\": \"2025-05-26T12:03:28.703706Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.703706Z\"\n    },\n    {\n        \"id\": 19,\n        \"title\": \"Orang-Orang Biasa\",\n        \"author\": \"Andrea Hirata\",\n        \"year\": 2019,\n        \"created_at\": \"2025-05-26T12:03:28.704553Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.704553Z\"\n    },\n    {\n        \"id\": 20,\n        \"title\": \"Aroma Karsa\",\n        \"author\": \"Dee Lestari\",\n        \"year\": 2018,\n        \"created_at\": \"2025-05-26T12:03:28.705057Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.705057Z\"\n    },\n    {\n        \"id\": 21,\n        \"title\": \"Sirkus Pohon\",\n        \"author\": \"Andrea Hirata\",\n        \"year\": 2017,\n        \"created_at\": \"2025-05-26T12:03:28.706138Z\",\n        \"updated_at\": \"2025-05-26T12:03:28.706138Z\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "New Request id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/books/1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 05:14:39 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "156"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"title\": \"Laskar Pelangi\",\n    \"author\": \"Andrea Hirata\",\n    \"year\": 2005,\n    \"created_at\": \"2025-05-26T12:03:28.692217Z\",\n    \"updated_at\": \"2025-05-26T12:03:28.692217Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/books/22",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"22"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/books/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 05:14:39 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "156"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"title\": \"Laskar Pelangi\",\n    \"author\": \"Andrea Hirata\",\n    \"year\": 2005,\n    \"created_at\": \"2025-05-26T12:03:28.692217Z\",\n    \"updated_at\": \"2025-05-26T12:03:28.692217Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"minum Kopi\",\r\n    \"author\": \"Dee Lestari\",\r\n    \"year\": 2000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/books",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "201",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"minum Kopi\",\r\n    \"author\": \"Dee Lestari\",\r\n    \"year\": 2000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 05:16:14 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "147"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 22,\n    \"title\": \"minum Kopi\",\n    \"author\": \"Dee Lestari\",\n    \"year\": 2000,\n    \"created_at\": \"2025-05-26T12:16:14.9336Z\",\n    \"updated_at\": \"2025-05-26T12:16:14.9336Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"minum Kopi\",\r\n    \"author\": \"Dee Lestari\",\r\n    \"year\": 2020\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/books/22",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"22"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"minum Kopi\",\r\n    \"author\": \"Dee Lestari\",\r\n    \"year\": 2020\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books/22",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"22"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 05:25:12 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "149"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 22,\n    \"title\": \"minum Kopi\",\n    \"author\": \"Dee Lestari\",\n    \"year\": 2020,\n    \"created_at\": \"2025-05-26T12:16:14.9336Z\",\n    \"updated_at\": \"2025-05-26T12:25:12.282548Z\"\n}"
+				}
+			]
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"year\": 2024\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/books/22",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"books",
+						"22"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "200",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"year\": 2024\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/books/22",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"books",
+								"22"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 26 May 2025 05:27:41 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "149"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 22,\n    \"title\": \"minum Kopi\",\n    \"author\": \"Dee Lestari\",\n    \"year\": 2024,\n    \"created_at\": \"2025-05-26T12:16:14.9336Z\",\n    \"updated_at\": \"2025-05-26T12:27:41.618311Z\"\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

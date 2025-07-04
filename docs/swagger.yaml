@@ -1,0 +1,286 @@
+basePath: /api
+definitions:
+  models.Book:
+    description: Struktur data untuk buku
+    properties:
+      author:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+      year:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: support@swagger.io
+    name: API Support
+    url: http://www.swagger.io/support
+  description: This is a simple CRUD API for managing books.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: CRUD Buku API
+  version: "1.0"
+paths:
+  /books:
+    get:
+      consumes:
+      - application/json
+      description: Mengambil daftar semua buku dari database.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Daftar semua buku
+          schema:
+            items:
+              $ref: '#/definitions/models.Book'
+            type: array
+      summary: Mendapatkan semua buku
+      tags:
+      - books
+    post:
+      consumes:
+      - application/json
+      description: Menambahkan buku baru ke database.
+      parameters:
+      - description: Data buku baru
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/models.Book'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Buku berhasil dibuat
+          schema:
+            $ref: '#/definitions/models.Book'
+        "400":
+          description: Payload request tidak valid atau data buku tidak lengkap
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Kesalahan server internal
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Membuat buku baru
+      tags:
+      - books
+  /books/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Menghapus buku berdasarkan ID.
+      parameters:
+      - description: ID Buku
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Pesan sukses penghapusan
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "400":
+          description: ID buku tidak valid
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Buku tidak ditemukan untuk dihapus
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Kesalahan server internal
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Menghapus buku
+      tags:
+      - books
+    get:
+      consumes:
+      - application/json
+      description: Mengambil detail buku berdasarkan ID.
+      parameters:
+      - description: ID Buku
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Detail buku
+          schema:
+            $ref: '#/definitions/models.Book'
+        "400":
+          description: ID buku tidak valid
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Buku tidak ditemukan
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Kesalahan server internal
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Mendapatkan buku berdasarkan ID
+      tags:
+      - books
+    patch:
+      consumes:
+      - application/json
+      description: Memperbarui sebagian data buku (judul, penulis, atau tahun) berdasarkan
+        ID.
+      parameters:
+      - description: ID Buku
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Data buku yang akan diperbarui (hanya field yang ingin diubah)
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/models.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Buku berhasil diperbarui (sebagian)
+          schema:
+            $ref: '#/definitions/models.Book'
+        "400":
+          description: ID buku tidak valid atau payload request tidak valid
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Buku tidak ditemukan untuk diperbarui
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Kesalahan server internal
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Memperbarui sebagian data buku
+      tags:
+      - books
+    put:
+      consumes:
+      - application/json
+      description: Memperbarui data buku berdasarkan ID.
+      parameters:
+      - description: ID Buku
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Data buku yang diperbarui
+        in: body
+        name: book
+        required: true
+        schema:
+          $ref: '#/definitions/models.Book'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Buku berhasil diperbarui
+          schema:
+            $ref: '#/definitions/models.Book'
+        "400":
+          description: ID buku tidak valid atau payload request tidak valid
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Buku tidak ditemukan untuk diperbarui
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Kesalahan server internal
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Memperbarui buku
+      tags:
+      - books
+  /books/search:
+    get:
+      description: Search books by title, author, or year
+      parameters:
+      - description: Search query (can be title, author, or year)
+        in: query
+        name: q
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of matching books
+          schema:
+            items:
+              $ref: '#/definitions/models.Book'
+            type: array
+        "400":
+          description: Search query is required
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Search books
+      tags:
+      - books
+schemes:
+- http
+swagger: "2.0"
